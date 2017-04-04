@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "XXTabBarViewController.h"
+#import "XXGuideViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -69,11 +70,20 @@
     self.window=[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen]bounds]];
     self.window.backgroundColor=[UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    XXTabBarViewController *tabBar=[[XXTabBarViewController alloc] init];
-//    tabBar.view.backgroundColor=[UIColor whiteColor];
-    self.window.rootViewController=tabBar;
-    
-    return YES;
+    // 上一次的使用版本（存储在沙盒中的版本号）
+    NSString *versionKey=@"BundleVersion";
+    NSString *lastVersion=[[NSUserDefaults standardUserDefaults] objectForKey:versionKey];
+    // 当前app的版本号（从Info.plist中获得）
+    NSString *currentVersion=[NSBundle mainBundle].infoDictionary[versionKey];
+    if ([lastVersion isEqualToString:currentVersion]) {
+        self.window.rootViewController=[[XXTabBarViewController alloc] init];
+    }else{
+        self.window.rootViewController=[[XXGuideViewController alloc] init];
+        [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:versionKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+
+        return YES;
 }
 
 
