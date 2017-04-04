@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "XXTabBarViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -17,6 +17,62 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+  /*
+   //系统自带UITabBarController
+    // 初始化UITabBarController实例对象
+    UITabBarController *tabBar = [[UITabBarController alloc]init];
+    // 创建子控制器
+    UIViewController *vc1 = [[UIViewController alloc]init];
+    vc1.view.backgroundColor = [UIColor redColor];
+
+    // 设置标题
+    vc1.tabBarItem.title = @"微信";
+    // 设置选中状态的图片(  默认是蓝色，为了显示图片本来的颜色 设置mode  vc2,vc3,c4类似如此 )
+    vc1.tabBarItem.selectedImage = [[UIImage imageNamed:@"icon_tabbar_home_active"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+    // 设置未选中状态的图片
+    vc1.tabBarItem.image = [[UIImage imageNamed:@"icon_tabbar_home"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
+    // 未选中状态下文字颜色（vc2,vc3,c4类似如此）
+    [vc1.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor grayColor]} forState:UIControlStateNormal];
+    // 选中状态下的文字颜色
+    [vc1.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor redColor]} forState:UIControlStateSelected];
+//    // 设置右上角显示数字(例如: 未读消息数目)
+//    vc1.tabBarItem.badgeValue = @"100";
+//    // 右上角数字背景色
+//    vc1.tabBarItem.badgeColor = [UIColor greenColor];
+    
+    UIViewController *vc2 = [[UIViewController alloc]init];
+    vc2.view.backgroundColor = [UIColor orangeColor];
+    vc2.tabBarItem.title = @"联系人";
+    vc2.tabBarItem.selectedImage = [UIImage imageNamed:@"icon_tabbar_subscription_active"];
+    vc2.tabBarItem.image = [UIImage imageNamed:@"icon_tabbar_subscription"] ;
+    
+    UIViewController *vc3 = [[UIViewController alloc]init];
+    vc3.view.backgroundColor = [UIColor cyanColor];
+    vc3.tabBarItem.title = @"发现";
+    vc3.tabBarItem.image = [UIImage imageNamed:@"icon_tabbar_notification"];
+    vc3.tabBarItem.selectedImage = [UIImage imageNamed:@"icon_tabbar_notification_active"];
+    UIViewController *vc4 = [[UIViewController alloc]init];
+    vc4.view.backgroundColor = [UIColor whiteColor];
+    vc4.tabBarItem.title = @"我";
+    vc4.tabBarItem.image = [UIImage imageNamed:@"icon_tabbar_me"];
+    vc4.tabBarItem.selectedImage = [UIImage imageNamed:@"icon_tabbar_me_active"];
+    
+    
+    // 添加子视图到tabbar
+    tabBar.viewControllers = @[vc1, vc2, vc3, vc4];
+    
+    // 设置为window跟视图
+    self.window.rootViewController = tabBar;
+
+*/
+    self.window=[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen]bounds]];
+    self.window.backgroundColor=[UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    XXTabBarViewController *tabBar=[[XXTabBarViewController alloc] init];
+//    tabBar.view.backgroundColor=[UIColor whiteColor];
+    self.window.rootViewController=tabBar;
+    
     return YES;
 }
 
